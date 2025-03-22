@@ -9,3 +9,11 @@ spring:
     password: rootroot
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  rabbitmq:
+    port: 5672
+    host: 192.168.1.136
+    username: guest
+    password: guest
+  artemis:
+    embedded:
+      queues: queue-hello
