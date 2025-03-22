@@ -1,8 +1,11 @@
 package com.tencent.demo.controller;
 
+import com.alibaba.fastjson2.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tencent.demo.entity.Student;
 import com.tencent.demo.service.StudentService;
 import okhttp3.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +20,18 @@ import java.util.List;
 @RequestMapping()
 public class HeloController {
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
 
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private ObjectMapper objectMapper;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @GetMapping("/hello")
-    public Object hello(String msgs) throws IOException {
-        String msg = "hello";
+    public Object hello() throws IOException {
 
-        rabbitTemplate.send("queue-hello",new Message(msgs.getBytes()));
+        rabbitTemplate.send("queue-hello", new Message("hello".getBytes()));
 
         return "execute.body().bytes()";
     }
