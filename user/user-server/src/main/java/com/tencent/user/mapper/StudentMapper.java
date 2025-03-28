@@ -1,4 +1,4 @@
-package com.tencent.demo.mapper;
+package com.tencent.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tencent.demo.entity.Student;
