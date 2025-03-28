@@ -1,23 +1,27 @@
-package com.tencent.demo.config;
+package com.tencent.user.config;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-public class CreateBean {
+public class RabbitMqConfig {
+
+
+    public static final String QUEUE_NAME = "queue-hello";
+
 
     @Bean
-    public Queue myQueue() {
-        return new Queue("queue-hello", true);
+    public Queue queue() {
+        return new Queue(QUEUE_NAME, true);
     }
 
     @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+    RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
         return new RabbitTemplate(connectionFactory);
     }
 

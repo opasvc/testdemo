@@ -1,7 +1,7 @@
-package com.tencent.demo.mapper;
+package com.tencent.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.tencent.demo.entity.Student;
+import com.tencent.user.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

@@ -11,6 +11,7 @@
     <groupId>com.tencent</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>demo</name>
     <description>demo</description>
     <url/>
@@ -20,6 +21,9 @@
     <developers>
         <developer/>
     </developers>
+    <modules>
+        <module>user</module>
+    </modules>
     <scm>
         <connection/>
         <developerConnection/>
@@ -30,22 +34,22 @@
         <java.version>17</java.version>
         <spring-ai.version>1.0.0-M4</spring-ai.version>
     </properties>
-    <dependencies>
+<!--    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.ai</groupId>-->
-        <!--            <artifactId>spring-ai-openai-spring-boot-starter</artifactId>-->
-        <!--        </dependency>-->
+        &lt;!&ndash;        <dependency>&ndash;&gt;
+        &lt;!&ndash;            <groupId>org.springframework.ai</groupId>&ndash;&gt;
+        &lt;!&ndash;            <artifactId>spring-ai-openai-spring-boot-starter</artifactId>&ndash;&gt;
+        &lt;!&ndash;        </dependency>&ndash;&gt;
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
+&lt;!&ndash;        <dependency>&ndash;&gt;
+&lt;!&ndash;            <groupId>org.springframework.boot</groupId>&ndash;&gt;
+&lt;!&ndash;            <artifactId>spring-boot-devtools</artifactId>&ndash;&gt;
+&lt;!&ndash;            <scope>runtime</scope>&ndash;&gt;
+&lt;!&ndash;            <optional>true</optional>&ndash;&gt;
+&lt;!&ndash;        </dependency>&ndash;&gt;
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -54,45 +58,38 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.12.0</version>
         </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter &ndash;&gt;
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.4</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot3-starter -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot3-starter &ndash;&gt;
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
-            <version>3.5.10.1</version>
         </dependency>
-        <!-- 工具库  https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        &lt;!&ndash; 工具库  https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 &ndash;&gt;
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.17.0</version>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.29</version>
         </dependency>
-        <!-- 处理json数据 https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
+        &lt;!&ndash; 处理json数据 https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl &ndash;&gt;
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
-            <version>1.9.13</version>
         </dependency>
-        <!--     lombok依赖   -->
+        &lt;!&ndash;     lombok依赖   &ndash;&gt;
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -100,24 +97,19 @@
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>2.0.51</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-ollama -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.ai</groupId>-->
-        <!--            <artifactId>spring-ai-ollama</artifactId>-->
-        <!--            <version>1.0.0-M6</version>-->
-        <!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-    </dependencies>
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-ollama &ndash;&gt;
+        &lt;!&ndash;        <dependency>&ndash;&gt;
+        &lt;!&ndash;            <groupId>org.springframework.ai</groupId>&ndash;&gt;
+        &lt;!&ndash;            <artifactId>spring-ai-ollama</artifactId>&ndash;&gt;
+        &lt;!&ndash;            <version>1.0.0-M6</version>&ndash;&gt;
+        &lt;!&ndash;        </dependency>&ndash;&gt;
+    </dependencies>-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -126,6 +118,84 @@
                 <version>${spring-ai.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!--            <dependency>
+                            <groupId>org.springframework.cloud</groupId>
+                            <artifactId>spring-cloud-dependencies</artifactId>
+                            <version>2022.0.2</version>
+                            <type>pom</type>
+                            <scope>import</scope>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.alibaba.cloud</groupId>
+                            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                            <version>2022.0.0.0-RC2</version>
+                            <type>pom</type>
+                            <scope>import</scope>
+                        </dependency>-->
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2023.0.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-alibaba-dependencies -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2023.0.3.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>2.0.51</version>
+            </dependency>
+            <dependency> <!-- 处理json数据 https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-core-asl</artifactId>
+                <version>1.9.13</version>
+            </dependency>
+
+            <!-- 工具库  https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.8.29</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>4.12.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.33</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>3.0.4</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot3-starter -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>3.5.10.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
