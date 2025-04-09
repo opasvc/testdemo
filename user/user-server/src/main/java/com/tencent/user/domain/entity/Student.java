@@ -1,4 +1,4 @@
-package com.tencent.user.entity;
+package com.tencent.user.domain.entity;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;

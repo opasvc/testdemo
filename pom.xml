@@ -23,6 +23,7 @@
     </developers>
     <modules>
         <module>user</module>
+        <module>demo-message</module>
     </modules>
     <scm>
         <connection/>
