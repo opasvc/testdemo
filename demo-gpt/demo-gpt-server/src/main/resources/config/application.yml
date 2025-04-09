@@ -1,0 +1,11 @@
+server:
+  port: 18083
+spring:
+  application:
+    name: gpt-server
+  ai:
+    ollama:
+      chat:
+#        model: deepseek-r1:8b
+        model: huihui_ai/deepseek-r1-abliterated:14b
+      base-url: http://localhost:11434

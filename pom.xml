@@ -24,6 +24,7 @@
     <modules>
         <module>user</module>
         <module>demo-message</module>
+        <module>demo-gpt</module>
     </modules>
     <scm>
         <connection/>
