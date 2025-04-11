@@ -1,17 +1,23 @@
 package com.tencent.user;
 
+import com.alibaba.nacos.api.NacosFactory;
+import com.alibaba.nacos.api.exception.NacosException;
+import com.alibaba.nacos.api.naming.NamingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.scheduling.annotation.EnableAsync;
+
 
 @Slf4j
 @EnableAsync
+@EnableDiscoveryClient
 @SpringBootApplication
 public class UserServerApplication {
     public static void main(String[] args) {
+        SpringApplication.run(UserServerApplication.class, args);
         setProxy();
-        SpringApplication.run(UserServerApplication.class);
         log.info("UserServerApplication 启动成功");
     }
     //设置系统代理

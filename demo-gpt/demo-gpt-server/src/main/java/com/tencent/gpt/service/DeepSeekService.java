@@ -15,6 +15,12 @@ public class DeepSeekService {
         return ollamaModel.call(question);
     }
     public Flux<String> deepSeekChat(String question) {
+//        return ollamaModel.stream(question)
+//                .map(response -> {
+//                    String cleanedResponse = response.replaceAll("<think>.*?</think>", "");
+//                    cleanedResponse = cleanedResponse.replaceAll("^\\s+", "");
+//                    return cleanedResponse;
+//                });
         return ollamaModel.stream(question);
     }
 

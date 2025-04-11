@@ -17,3 +17,18 @@ spring:
   artemis:
     embedded:
       queues: queue-hello
+
+  main:
+    allow-circular-references: true
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.23.255.221:8848
+        namespace: public
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos
+        service: user-server
+        register-enabled: true
+        ip: 172.23.255.221
