@@ -1,25 +1,62 @@
 #   服务信息配置
 server:
   port: 18080
+  address: 0.0.0.0
 spring:
-#   应用相关设置
+  #   应用相关设置
   application:
     name: gateway-server
-
-# nacos相关设置
+    deploy: dev
+    version: v1
+  profiles:
+    active: dev
+  # nacos相关设置
   cloud:
+    openfeign:
+      lazy-attributes-resolution: true
+      client:
+        config:
+          default:
+            connectTimeout: 30000
+            readTimeout: 30000
+            loggerLevel: basic
     nacos:
       discovery:
         #        server-addr: 172.23.255.221:8848
         server-addr: 192.168.1.136:8848
-        namespace: public
-        group: DEFAULT_GROUP
+        namespace: DEMO
+        group: ${spring.application.deploy}
         username: nacos
         password: nacos
-        service: user-server
+        service: ${spring.application.name}
         register-enabled: true
         #        ip: 172.23.255.221
-        ip: 192.168.1.136
-#        网关相关配置
+#        ip: 192.168.1.136
+    #        网关相关配置
     gateway:
       enabled: true
+      routes:
+        - id: user-server
+#          uri: http://localhost:18081
+          uri: lb://user-server
+          predicates:
+            - Path=/user-server/**
+          filters:
+            - StripPrefix=1
+        - id: message-server
+          uri: lb://message-server
+          predicates:
+            - Path=/message-server/**
+          filters:
+            - StripPrefix=1
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            # 允许请求中携带的头信息
+            allowedHeaders: "*"
+            # 运行跨域的请求方式
+            allowedMethods: "*"
+            # 跨域检测的有效期,单位s
+            maxAge: 36000
+

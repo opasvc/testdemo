@@ -1,5 +1,6 @@
 package com.tencent.user.controller;
 
+import com.tencent.message.client.feign.MessageControllerFeign;
 import com.tencent.user.domain.VO.Result;
 import com.tencent.user.domain.entity.UserInfo;
 import com.tencent.user.service.UserInfoService;
@@ -18,8 +19,9 @@ public class UserInfoController {
 
     @Resource
     private UserInfoService userInfoService;
-//    @Resource
+    @Resource
 
+    private MessageControllerFeign messageControllerFeign;
 
     @GetMapping("/image")
     public String image(@Param("deviceId") String deviceId) {
@@ -27,6 +29,14 @@ public class UserInfoController {
         String imageCode = ImageCodeUtil.getImageCode();
 
         return imageCode;
+    }
+
+    @GetMapping("/list")
+    public Result test() {
+        log.info("设备ID为:{},开始获取图像...");
+        messageControllerFeign.testSendMessage();
+//        System.exit(1);
+        return Result.success(userInfoService.list());
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")

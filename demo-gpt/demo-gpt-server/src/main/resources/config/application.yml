@@ -2,13 +2,42 @@
 server:
   port: 18083
 spring:
- #   应用相关设置
+  #   应用相关设置
   application:
     name: gpt-server
-#    大模型设置
+  #    大模型设置
   ai:
     ollama:
       chat:
-#        model: deepseek-r1:8b
+        #        model: deepseek-r1:8b
         model: huihui_ai/deepseek-r1-abliterated:14b
       base-url: http://localhost:11434
+  #================= 允许循环依赖
+  main:
+    allow-circular-references: true
+  #=================   nacos相关配置
+  cloud:
+    nacos:
+      discovery:
+        #        server-addr: 172.23.255.221:8848
+        server-addr: 192.168.1.136:8848
+        namespace: DEMO
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos
+        service: user-server
+        register-enabled: true
+        #        ip: 172.23.255.221
+        ip: 192.168.1.136
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,8 @@
 package com.tencent.user.mapper;
 
-import cn.hutool.system.UserInfo;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.tencent.user.domain.entity.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

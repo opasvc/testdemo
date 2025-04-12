@@ -1,13 +1,35 @@
 #   服务信息配置
 server:
   port: 18082
+  address: 0.0.0.0
 spring:
   #   应用相关设置
   application:
     name: message-server
+    deploy: dev
+    version: v1
+  profiles:
+    active: dev
     #    数据库连接配置
   datasource:
-    url: jdbc:mysql://192.168.1.133:3306/public?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.1.136:3306/public?useUnicode=true&characterEncoding=utf-8
     username: root
     password: rootroot
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # 允许循环依赖
+  main:
+    allow-circular-references: true
+  # ====   nacos相关配置
+  cloud:
+    nacos:
+      discovery:
+        #        server-addr: 172.23.255.221:8848
+        server-addr: 192.168.1.136:8848
+        namespace: DEMO
+        group: ${spring.application.deploy}
+        username: nacos
+        password: nacos
+        service: ${spring.application.name}
+        register-enabled: true
+        #        ip: 172.23.255.221
+#        ip: 192.168.1.136

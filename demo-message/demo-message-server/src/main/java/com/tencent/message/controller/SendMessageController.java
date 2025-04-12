@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/message")
 public class SendMessageController {
 
-    @RequestMapping("/send")
-    public String sendMessage() {
+    @RequestMapping("/test")
+    public String testSendMessage() {
         log.info("send message");
         return "send message";
     }

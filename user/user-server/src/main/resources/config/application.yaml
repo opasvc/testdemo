@@ -1,13 +1,18 @@
 #   服务信息配置
 server:
   port: 18081
+  address: 0.0.0.0
 spring:
   #   应用相关设置
   application:
     name: user-server
+    deploy: dev
+    version: v1
+  profiles:
+    active: dev
   #    数据库连接配置
   datasource:
-    url: jdbc:mysql://192.168.1.133:3306/public?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.1.136:3306/public?useUnicode=true&characterEncoding=utf-8
     username: root
     password: rootroot
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,7 +26,7 @@ spring:
   artemis:
     embedded:
       queues: queue-hello
-
+  # 允许循环依赖
   main:
     allow-circular-references: true
   # ====   nacos相关配置
@@ -30,11 +35,65 @@ spring:
       discovery:
         #        server-addr: 172.23.255.221:8848
         server-addr: 192.168.1.136:8848
-        namespace: public
-        group: DEFAULT_GROUP
+        namespace: DEMO
+        group: ${spring.application.deploy}
         username: nacos
         password: nacos
-        service: user-server
+        service: ${spring.application.name}
         register-enabled: true
         #        ip: 172.23.255.221
-        ip: 192.168.1.136
+#        ip: 192.168.1.136  #服务启动的本机ip
+      config:
+        prefix:
+          ${spring:application:name}
+        data-id: ${spring:application:name}-${spring:application:deploy}.yml
+        # 是否启用nacos的配置中心
+        enabled: true
+        # 连接配置中心的地址 ip:port ,port不能省略
+        server-addr: 192.168.1.136:8848
+        namespace: DEMO
+        group: ${spring.application.deploy}
+        # 在nacos 配置中心中，配置文件的名称 推荐和spring.application.name一致
+        # name: office
+        # 在nacos 配置中心中，配置文件的扩展名
+        file-extension: yml
+        refresh:
+          enabled: true
+        shared-configs:
+          - data-id: rabbit.yml
+            group: ${spring.application.deploy}
+            refresh: true
+
+        import-check:
+          enabled: true
+    openfeign:
+      lazy-attributes-resolution: true
+      client:
+        config:
+          default:
+            connectTimeout: 30000
+            readTimeout: 30000
+            loggerLevel: basic
+
+
+
+
+  #   配置文件导入
+  config:
+    import: "optional:nacos:nacos"
+#===============日志相关
+logging:
+  level:
+#    root: DEBUG
+    root: INFO
+    org:
+      springframework: DEBUG
+    com:
+      example: DEBUG
+  file:
+    name: app.log
+    path: ./logs
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#======================  feign配置

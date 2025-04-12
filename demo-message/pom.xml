@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>demo-message-server</module>
+        <module>demo-message-client</module>
     </modules>
 
     <properties>

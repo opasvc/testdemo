@@ -25,12 +25,13 @@ public class H1Controller {
     @Resource
     private RabbitTemplate rabbitTemplate;
 
+//    @Value("${rabbitmq.artemis.embedded.queues}")
+//    private String ksy;
+
     @GetMapping("/ping")
     public String ping() {
         Student student = new Student();
         student.setName("小明");
-        String jsonString = JSON.toJSONString(student);
-        rabbitTemplate.send(RabbitMqConfig.QUEUE_NAME, new Message(jsonString.getBytes()));
         sendMessage();
         return student.toString();
     }
