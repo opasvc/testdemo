@@ -1,8 +1,11 @@
+# 服务信息配置
 server:
   port: 18083
 spring:
+ #   应用相关设置
   application:
     name: gpt-server
+#    大模型设置
   ai:
     ollama:
       chat:

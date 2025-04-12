@@ -1,0 +1,25 @@
+#   服务信息配置
+server:
+  port: 18080
+spring:
+#   应用相关设置
+  application:
+    name: gateway-server
+
+# nacos相关设置
+  cloud:
+    nacos:
+      discovery:
+        #        server-addr: 172.23.255.221:8848
+        server-addr: 192.168.1.136:8848
+        namespace: public
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos
+        service: user-server
+        register-enabled: true
+        #        ip: 172.23.255.221
+        ip: 192.168.1.136
+#        网关相关配置
+    gateway:
+      enabled: true

@@ -1,8 +1,11 @@
+#   服务信息配置
 server:
   port: 18082
 spring:
+  #   应用相关设置
   application:
     name: message-server
+    #    数据库连接配置
   datasource:
     url: jdbc:mysql://192.168.1.133:3306/public?useUnicode=true&characterEncoding=utf-8
     username: root
