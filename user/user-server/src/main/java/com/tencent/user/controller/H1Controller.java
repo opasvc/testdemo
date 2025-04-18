@@ -1,5 +1,6 @@
 package com.tencent.user.controller;
 
+import com.tencent.message.client.feign.MessageControllerFeign;
 import com.tencent.user.config.RabbitMqConfig;
 import com.alibaba.fastjson2.JSON;
 import com.tencent.user.domain.entity.Student;
@@ -24,6 +25,8 @@ import java.io.IOException;
 public class H1Controller {
     @Resource
     private RabbitTemplate rabbitTemplate;
+    @Resource
+    private MessageControllerFeign clietnfeign;
 
 //    @Value("${rabbitmq.artemis.embedded.queues}")
 //    private String ksy;
@@ -32,7 +35,8 @@ public class H1Controller {
     public String ping() {
         Student student = new Student();
         student.setName("小明");
-        sendMessage();
+//        sendMessage();
+        clietnfeign.testSendMessage();
         return student.toString();
     }
 

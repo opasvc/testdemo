@@ -1,11 +1,11 @@
 #   服务信息配置
 server:
   port: 18082
-  address: 0.0.0.0
+#  address: 10.147.20.132
 spring:
   #   应用相关设置
   application:
-    name: message-server
+    name: msg-server
     deploy: dev
     version: v1
   profiles:
@@ -31,5 +31,4 @@ spring:
         password: nacos
         service: ${spring.application.name}
         register-enabled: true
-        #        ip: 172.23.255.221
-#        ip: 192.168.1.136
+        ip: 192.168.199.116

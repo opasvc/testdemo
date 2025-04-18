@@ -1,7 +1,7 @@
 #   服务信息配置
 server:
   port: 18081
-  address: 0.0.0.0
+#  address: 10.147.20.132
 spring:
   #   应用相关设置
   application:
@@ -41,7 +41,7 @@ spring:
         password: nacos
         service: ${spring.application.name}
         register-enabled: true
-        #        ip: 172.23.255.221
+        ip: 192.168.199.116
 #        ip: 192.168.1.136  #服务启动的本机ip
       config:
         prefix:
@@ -90,6 +90,8 @@ logging:
       springframework: DEBUG
     com:
       example: DEBUG
+    feign: DEBUG
+    com.tencent.message.client.feign.MessageControllerFeign: DEBUG
   file:
     name: app.log
     path: ./logs

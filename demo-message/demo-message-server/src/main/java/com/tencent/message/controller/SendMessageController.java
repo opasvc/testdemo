@@ -1,6 +1,7 @@
 package com.tencent.message.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/message")
 public class SendMessageController {
 
-    @RequestMapping("/test")
+    @GetMapping("/test")
     public String testSendMessage() {
         log.info("send message");
         return "send message";

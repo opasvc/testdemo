@@ -5,13 +5,19 @@ spring:
   #   应用相关设置
   application:
     name: gpt-server
+    deploy: dev
+    version: v1
+  profiles:
+    active: ${spring.application.deploy}
   #    大模型设置
   ai:
     ollama:
       chat:
-        #        model: deepseek-r1:8b
-        model: huihui_ai/deepseek-r1-abliterated:14b
-      base-url: http://localhost:11434
+#        model: deepseek-r1:8b
+#        model: huihui_ai/deepseek-r1-abliterated:14b
+        model: qwen:0.5b
+#      base-url: http://localhost:11434
+      base-url: http://192.168.1.136:11434
   #================= 允许循环依赖
   main:
     allow-circular-references: true
@@ -22,13 +28,13 @@ spring:
         #        server-addr: 172.23.255.221:8848
         server-addr: 192.168.1.136:8848
         namespace: DEMO
-        group: DEFAULT_GROUP
+        group: ${spring.application.deploy}
         username: nacos
         password: nacos
-        service: user-server
+        service: ${spring.application.name}
         register-enabled: true
-        #        ip: 172.23.255.221
-        ip: 192.168.1.136
+        #        ip: 172.23.255.221   #服务启动的本机ip
+        ip: 192.168.199.116
 
 
 
