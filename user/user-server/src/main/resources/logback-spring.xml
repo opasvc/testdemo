@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!-- 定义日志文件的存储路径 -->
-    <property name="LOG_PATH" value="./logs"/>
+    <property name="LOG_PATH" value="./.logs"/>
     <property name="LOG_ARCHIVE" value="true"/>
+    <property name="LOG_NAME" value="${spring.application.name:-user-server}"/>
 
-    <!-- 控制台输出 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - [%X{service}] %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- 按日期切割日志文件 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}/app.log</file>
+        <file>${LOG_PATH}/${LOG_NAME}-log.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/app-%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>30</maxHistory> <!-- 保留30天的日志 -->
-        </rollingPolicy>
+            <fileNamePattern>${LOG_PATH}/${LOG_NAME}-log-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory> </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - [%X{service}] %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- 根日志配置 -->
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
 
-    <!-- 指定包的日志级别 -->
     <logger name="org.springframework" level="DEBUG"/>
     <logger name="com.example" level="DEBUG"/>
+    <logger name="com.tencent" level="INFO"/>
 </configuration>

@@ -81,6 +81,8 @@ spring:
   #   配置文件导入
   config:
     import: "optional:nacos:nacos"
+  banner:
+    location: classpath:config/banner.txt
 #===============日志相关
 logging:
   level:
@@ -94,7 +96,7 @@ logging:
     com.tencent.message.client.feign.MessageControllerFeign: DEBUG
   file:
     name: app.log
-    path: ./logs
+    path: ./.logs
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
