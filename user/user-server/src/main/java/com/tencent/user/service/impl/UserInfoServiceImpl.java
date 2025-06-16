@@ -10,5 +10,8 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> implements UserInfoService {
-
+    @Override
+    public UserInfo getByUsername(String username) {
+        return baseMapper.selectByUsername(username);
+    }
 }

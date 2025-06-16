@@ -42,17 +42,15 @@ public class Result<T> implements Serializable {
         return result;
     }
 
-    public Result error(String msg) {
-
+    public static Result error(String msg) {
         Result<Object> result = new Result<>();
-
         result.code = 500;
         result.msg = msg;
         result.time = LocalDateTime.now();
         return result;
     }
 
-    public Result error(Integer code, String msg) {
+    public static Result error(Integer code, String msg) {
         Result<Object> result = new Result<>();
         result.code = code;
         result.msg = msg;
